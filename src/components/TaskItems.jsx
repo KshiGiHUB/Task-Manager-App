@@ -1,6 +1,6 @@
 import { useTasks } from "../context/TaskContext"
 const TaskItems = ({task}) => {
-    const {toggleTask} = useTasks();
+    const {toggleTask, deleteTask} = useTasks();
     
   return (
     <div>
@@ -9,6 +9,7 @@ const TaskItems = ({task}) => {
         checked={task.completed}
         onChange={()=> toggleTask(task.id)}/>
         <span>{task.text}</span>
+        <button onClick={()=> deleteTask(task.id)}>Delete</button>
     </div>
   )
 }

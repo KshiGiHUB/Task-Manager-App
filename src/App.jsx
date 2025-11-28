@@ -5,15 +5,20 @@ import TaskInput from './components/TaskInput'
 import TaskList from './components/TaskList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [theme, setTheme] = useState(false)
 
   return (
     <>
       <TaskProvider>
-        <div>
+        <div className='main'>
+          <div className={theme ? "darkMode": "lightMode"}>
+          <button onClick={()=> setTheme(!theme)}>
+            {theme ? "Dark Mode" : "Light Mode"}
+          </button>
           <h1>Task Manager</h1>
           <TaskInput/>
           <TaskList/>
+        </div>
         </div>
       </TaskProvider>
     </>

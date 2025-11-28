@@ -19,7 +19,7 @@ export const TaskProvider = ({children}) => {
     },[setTasks])
 
     const deleteTask = useCallback((id)=>{
-        setTasks((prev)=> prev.filter((t)=> t.id === id));
+        setTasks((prev)=> prev.filter((t)=> t.id !== id));
     },[setTasks])
 
     const value = useMemo(()=>
