@@ -1,9 +1,9 @@
-import React ,{createContext, useCallback}from 'react'
+import React ,{createContext, useCallback, useContext, useMemo}from 'react'
 import useLocalStorage from '../hooks/useLocalStorage';
 
-const TextContext = createContext();
+const TaskContext = createContext();
 
-export const TaskProvider = () => {
+export const TaskProvider = ({children}) => {
     const [tasks, setTasks] = useLocalStorage("tasks",[]);
 
     const addTask = useCallback((text)=>{
@@ -18,7 +18,17 @@ export const TaskProvider = () => {
         )
     },[setTasks])
 
-  return (
-    <div>TaskContext</div>
-  )
+    const deleteTask = useCallback((id)=>{
+        setTasks((prev)=> prev.filter((t)=> t.id === id));
+    },[setTasks])
+
+    const value = useMemo(()=>
+        ({tasks, addTask, toggleTask, deleteTask}),
+        [tasks, addTask, toggleTask, deleteTask]
+    )
+
+    return <TextContext.Provider value = {value}>{children}</TextContext.Provider>
+
 }
+
+export const useTasks = () => useContext(TaskContext) 
