@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useTasks } from '../context/TaskContext';
 
 const TaskInput = () => {
+    const {addTask} = useTasks()
     const [text, setText] = useState("");
-    const handleSubmit = ()=>{
-        e.prevent.default()
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
         if(!text.trim()){
             return alert("Task cannot be empty")
         }
-        setTask("")
+        addTask(text)
+        setText("")
     }
   return (
     <>

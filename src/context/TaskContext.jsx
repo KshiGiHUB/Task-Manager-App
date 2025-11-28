@@ -27,7 +27,7 @@ export const TaskProvider = ({children}) => {
         [tasks, addTask, toggleTask, deleteTask]
     )
 
-    return <TextContext.Provider value = {value}>{children}</TextContext.Provider>
+    return <TaskContext.Provider value = {value}>{children}</TaskContext.Provider>
 
 }
 
