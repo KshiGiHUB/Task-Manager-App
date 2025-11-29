@@ -15,14 +15,14 @@ const TaskInput = () => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex gap-3 items-center bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex flex-col gap-3 sm:flex-row sm:items-center">
                 <input
                     type="text"
                     value={text}
                     placeholder='enter text'
                     onChange={(e) => setText(e.target.value)}
-                    className="flex-1 p-2 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 outline-none" />
-                <button className="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700">Add</button>
+                    className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-700 dark:bg-gray-900 outline-none text-sm" />
+                <button className="w-full sm:w-auto px-6 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 text-sm font-medium">Add</button>
             </form>
         </>
     )
